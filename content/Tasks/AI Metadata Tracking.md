@@ -1,6 +1,6 @@
 ---
 title: "AI Metadata Tracking"
-status: "3-backlog"
+status: "4-done"
 sprint: 2
 phase: 1
 section: "1.5"

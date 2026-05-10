@@ -20,14 +20,10 @@ Project Setup → Design System → Auth → Dashboard → Brief Data Layer
 
 ## Current Focus
 
-**Sprint 1 is complete.** Phase 1 MVP is fully shipped. Beginning Sprint 2 — Pre-Launch Hardening.
+**Sprint 2 is complete.** Rate limiting, security hardening, AI metadata tracking, connected accounts, and E2E tests are shipped. One task remains: Sentry Error Tracking (requires interactive Sentry wizard setup).
 
-> [!todo] Sprint 2 Next Steps
-> 1. Rate Limiting — `POST /api/ai/*` routes (p0)
-> 2. Security Hardening — CSP headers, input sanitization, secret audit (p1)
-> 3. Sentry Error Tracking (p1)
-> 4. E2E Tests — Wizard Flow (p1)
-> 5. E2E Tests — Dashboard (p2)
+> [!todo] Remaining Sprint 2
+> 1. Sentry Error Tracking — run `npx @sentry/wizard@latest -i nextjs`, set `SENTRY_DSN` in Vercel dashboard
 
 See [[Sprint.base]] for the live task-level kanban.
 

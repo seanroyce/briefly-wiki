@@ -1,6 +1,6 @@
 ---
 title: "E2E Tests — Wizard Flow"
-status: "3-backlog"
+status: "4-done"
 sprint: 2
 phase: 1
 section: "cross-cutting"
