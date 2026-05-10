@@ -23,11 +23,13 @@ Project Setup → Design System → Auth → Dashboard → Brief Data Layer
 **Phase 1 (MVP)** is ~80% complete. The highest-priority remaining tasks:
 
 > [!todo] Immediate Next Steps
-> 1. Update `SUPABASE_SERVICE_ROLE_KEY` in `.env.local` (currently `placeholder`) after Supabase project restoration
+> 1. Update `SUPABASE_SERVICE_ROLE_KEY` in `.env.local` (currently `placeholder`) after Supabase project restoration completes
 > 2. Apply migration `002_structured_content.sql` once Supabase is back online
 > 3. Set up Vercel deployment (Phase 0.4)
 > 4. Add loading skeleton states (Phase 1.1)
 > 5. Wire "Ask AI to help" inline refine button in `BriefSectionCard` (`POST /api/ai/refine`)
+
+See [[Sprint.base]] for the live task-level kanban.
 
 ## Phase Summary
 
@@ -56,7 +58,7 @@ Project Setup → Design System → Auth → Dashboard → Brief Data Layer
 
 ## What's Next (MVP Gap)
 
-- Restore Supabase connection (project was paused — reactivating)
+- Update `SUPABASE_SERVICE_ROLE_KEY` in `.env.local` (Supabase project was paused — reactivating)
 - Apply pending migration `002_structured_content.sql`
 - Vercel deployment
 - Users profile table migration (name, avatar_url)

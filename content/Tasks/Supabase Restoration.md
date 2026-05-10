@@ -1,6 +1,6 @@
 ---
 title: "Supabase Restoration"
-status: "1-active"
+status: "4-done"
 sprint: 1
 phase: 0
 section: "0.2"

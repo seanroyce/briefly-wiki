@@ -22,7 +22,8 @@ Pages follow a **server component → client component** split:
 | `/reset-password` | `app/reset-password/page.tsx` | Set new password |
 | `/dashboard` | `app/dashboard/page.tsx` | Brief list (protected) |
 | `/brief/new` | `app/brief/new/page.tsx` | 6-step wizard (protected) |
-| `/brief/[id]` | `app/brief/[id]/page.tsx` | Brief detail/edit (protected) |
+| `/brief/[id]` | `app/brief/[id]/page.tsx` | Brief detail/read view (protected) |
+| `/brief/[id]/edit` | `app/brief/[id]/edit/page.tsx` | Wizard pre-populated for editing (protected) |
 | `/settings` | `app/settings/page.tsx` | Account settings (protected) |
 
 ## Data Flow
@@ -72,6 +73,7 @@ Server Component (page.tsx)
 | `GET /api/brief/[id]/export/pdf` | Stream PDF of brief |
 | `GET /api/brief/[id]/export/markdown` | Download .md file |
 | `POST /api/files/upload` | Upload files to Supabase Storage |
+| `POST /api/ai/refine` | Refine a section's structured content using Claude |
 | `GET /auth/callback` | OAuth + email verification callback |
 
 ## See Also

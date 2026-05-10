@@ -1,6 +1,6 @@
 ---
 title: "Brief Edit Route"
-status: "2-ready"
+status: "4-done"
 sprint: 1
 phase: 1
 section: "1.8"
@@ -17,9 +17,9 @@ Build `/brief/[id]/edit` — the wizard pre-populated with existing brief conten
 
 ## Tasks
 
-- [ ] Create `src/app/brief/[id]/edit/page.tsx` — server component that fetches brief + sections, passes to wizard client
-- [ ] Update `WizardClient` to accept an `editMode` prop that skips the "import & process" gate on Step 1 and shows section cards immediately
-- [ ] Update "Edit" button on brief view to link to `/brief/[id]/edit` instead of `/brief/new?briefId=:id`
+- [x] Create `src/app/brief/[id]/edit/page.tsx` — server component that fetches brief + sections, passes to wizard client
+- [x] Update `WizardClient` to accept an `editMode` prop that skips the "import & process" gate on Step 1 and shows section cards immediately
+- [x] Update "Edit" button + "Start editing" link on brief view to `/brief/[id]/edit`
 
 ## See Also
 

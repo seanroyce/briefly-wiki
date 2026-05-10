@@ -19,7 +19,7 @@ tags:
 | `<EmptyState />` | `empty-state.tsx` | Illustration + headline + description + CTA button |
 | `<BriefCard />` | `brief-card.tsx` | Dashboard card — name, status badge, completion bar, gap count, last modified, options menu (edit, duplicate, delete) |
 | `<WizardStepper />` | `wizard-stepper.tsx` | Horizontal step indicator — states: pending / active / complete / skipped |
-| `<BriefSectionCard />` | `brief-section-card.tsx` | Wizard section editor — preview table, prompt questions, "Process Context" button |
+| `<BriefSectionCard />` | `brief-section-card.tsx` | Wizard section editor — preview table, prompt questions, "Process context" + "Ask AI to help" buttons |
 | `<SubsectionPreviewTable />` | `subsection-preview-table.tsx` | Two-column table rendered from `structured_content` JSONB |
 | `<GapCard />` | `gap-card.tsx` | Severity badge, description, "Fix this" / "Dismiss" actions |
 | `<InlineGap />` | `inline-gap.tsx` | Inline gap indicator within brief view sections |

@@ -28,6 +28,7 @@ aliases:
 | Features | [[Features.base]] | All features by phase, status, and completion |
 | Sprint Board | [[Sprint.base]] | Task-level kanban — source of truth for sprint planning |
 | Roadmap | [[Roadmap]] | Phase overview and status |
+| Published Wiki | [seanroyce.github.io/briefly-wiki](https://seanroyce.github.io/briefly-wiki/) | Live Quartz-published version of this wiki |
 
 ## Project Status
 

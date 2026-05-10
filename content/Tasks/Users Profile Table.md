@@ -1,6 +1,6 @@
 ---
 title: "Users Profile Table"
-status: "2-ready"
+status: "4-done"
 sprint: 1
 phase: 1
 section: "1.2"
@@ -17,11 +17,11 @@ Add a `users` public profile table so name and avatar are stored in Postgres (no
 
 ## Tasks
 
-- [ ] Write migration: `users` table — `id` (references `auth.users`), `email`, `full_name`, `avatar_url`, `auth_provider`, `created_at`, `updated_at`
-- [ ] Add RLS: users can only select/update their own row
-- [ ] Write DB trigger: auto-insert into `users` on `auth.users` insert
-- [ ] Update `updateProfile` server action to write to `users` table (not just auth metadata)
-- [ ] Apply migration to Supabase
+- [x] Write migration: `users` table — `id` (references `auth.users`), `email`, `full_name`, `avatar_url`, `auth_provider`, `created_at`, `updated_at`
+- [x] Add RLS: users can only select/update their own row
+- [x] Write DB trigger: auto-insert into `users` on `auth.users` insert
+- [x] Update `updateProfile` server action to write to `users` table (not just auth metadata)
+- [ ] Apply migration to Supabase (manual step — paste `003_users_profile.sql` into Supabase SQL Editor)
 
 ## See Also
 

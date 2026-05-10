@@ -12,7 +12,7 @@ Briefly uses the **Anthropic Claude API** for three AI operations:
 
 1. **Process Context** — parse user notes → structured section content
 2. **Analyze Gaps** — evaluate brief quality → return gaps with severity
-3. **Section Refinement** — improve a section given new user context *(planned)*
+3. **Section Refinement** — improve a section given new user context (`POST /api/ai/refine`)
 
 ## Setup
 
@@ -103,12 +103,22 @@ Configured in `src/lib/ai/client.ts`. Default choices:
 | `src/actions/process-all-notes.ts` | `processAllNotes` batch action |
 | `src/actions/gap.ts` | `analyzeGaps`, `dismissGap` |
 
+## Section Refinement
+
+**Route:** `POST /api/ai/refine` (`src/app/api/ai/refine/route.ts`)
+
+**Body:** `{ briefId, sectionKey, currentContent: Record<string, string>, userContext?: string }`  
+**Response:** `{ structuredContent: Record<string, string> }`
+
+Uses a distinct `REFINE_SYSTEM_PROMPT` focused on improving existing content rather than extracting from raw notes. Verifies brief ownership before calling Claude. Uses the same tool-use pattern as `process-context.ts`.
+
+**UI:** "Ask AI to help" button (`Sparkles` icon) in `BriefSectionCard`. Enabled when the section has existing content. Sends the current structured content + any text in the "Add context" textarea as `userContext`. Clears the textarea on success.
+
 ## Planned but Not Built
 
 - `src/lib/ai/parse.ts` — typed response parser for Claude JSON output
 - Rate limiting: 10 process/hr, 20 gaps/hr, 30 refine/hr per user
 - `ai_metadata` tracking on `briefs` (model, tokens, processing time)
-- Section refinement endpoint: `POST /api/ai/refine`
 
 ## See Also
 
