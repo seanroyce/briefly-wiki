@@ -1,5 +1,5 @@
 ---
-title: Briefly — Project Wiki
+title: Briefly Wiki
 tags:
   - home
   - wiki
@@ -7,36 +7,43 @@ aliases:
   - Wiki Home
 ---
 
-# Briefly
+# Briefly Wiki
 
-> [!abstract] One-Liner
-> AI-powered campaign brief builder. Turns rough marketing notes into structured, gap-analyzed campaign briefs through a 6-step guided wizard.
+AI-powered campaign brief builder. Paste rough marketing notes, walk through a 6-step guided wizard, and get a structured, gap-analyzed brief.
 
-## Quick Reference
+**Live app:** [project-yqnrm.vercel.app](https://project-yqnrm.vercel.app) · **GitHub:** [seanroyce/briefly](https://github.com/seanroyce/briefly)
 
-| Area | Note | Purpose |
-|------|------|---------|
-| Architecture | [[Architecture]] | Stack, app structure, data flow |
-| Database | [[Database]] | Tables, RLS, migrations |
-| Auth | [[Auth]] | Login flows, middleware, session |
-| AI Pipeline | [[AI Pipeline]] | Claude API, prompts, actions |
-| Wizard | [[Wizard]] | 6-step wizard, sections |
-| Components | [[Components]] | UI component library |
-| Conventions | [[Conventions]] | Code patterns to follow |
-| Deployment | [[Deploy]] | Env vars, Vercel, Supabase CLI |
-| Extensibility | [[Extensibility]] | Future libraries, Railway, architectural upgrades |
-| Features | [[Features.base]] | All features by phase, status, and completion |
-| Sprint Board | [[Sprint.base]] | Task-level kanban — source of truth for sprint planning |
-| Roadmap | [[Roadmap]] | Phase overview and status |
-| Published Wiki | [seanroyce.github.io/briefly-wiki](https://seanroyce.github.io/briefly-wiki/) | Live Quartz-published version of this wiki |
+---
 
-## Project Status
+## Building & Running
 
-![[Features.base#By Phase]]
+| Topic | Page |
+|-------|------|
+| Architecture & routes | [[Architecture]] |
+| Database schema & migrations | [[Database]] |
+| Auth flows & middleware | [[Auth]] |
+| Deployment (Vercel + Supabase) | [[Deploy]] |
+| Conventions & gotchas | [[Conventions]] |
 
-## Visual Overview
+## Features & UI
 
-![[Overview.canvas]]
+| Topic | Page |
+|-------|------|
+| 6-step wizard | [[Wizard]] |
+| UI component library | [[Components]] |
+| AI pipeline (Claude API) | [[AI Pipeline]] |
+| Extensibility & future upgrades | [[Extensibility]] |
+
+## Planning
+
+| Topic | Page |
+|-------|------|
+| Roadmap & phase overview | [[Roadmap]] |
+| Sprint board (active tasks) | [[Sprint.base]] |
+| Feature tracker (by phase) | [[Features.base]] |
+| Full specification | [[spec]] |
+
+---
 
 ## Tech Stack
 
@@ -50,7 +57,15 @@ aliases:
 | Validation | Zod v4 (4.3.6) |
 | Hosting | Vercel |
 
-## Key Source Docs
+## What's Built
 
-- [[spec|Full Specification]] — detailed functional requirements and wireframes (~115KB)
-- [[project-plan|Project Plan]] — phased task list with checkboxes
+- Full auth — email/password, Google OAuth, password reset, `users` profile table
+- Dashboard — brief list, search, sort, delete, duplication
+- 6-step wizard — auto-save, per-section AI extraction, file upload, gap analysis
+- Brief view — read view, PDF + Markdown export, edit route (`/brief/[id]/edit`)
+- AI pipeline — `processContext`, `processAllNotes`, `analyzeGaps`, `/api/ai/refine`
+- Account settings — profile, password, account deletion
+
+## Current Sprint
+
+Phase 1 MVP is live. Remaining sprint 1 tasks: **Loading Skeletons**, **Dashboard Polish**, **Landing Page Polish**. See [[Sprint.base]] for the full board.

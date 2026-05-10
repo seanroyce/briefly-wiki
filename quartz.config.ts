@@ -8,8 +8,8 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Briefly — Project Wiki",
-    pageTitleSuffix: " | Briefly",
+    pageTitle: "Briefly Wiki",
+    pageTitleSuffix: " | Briefly Wiki",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
