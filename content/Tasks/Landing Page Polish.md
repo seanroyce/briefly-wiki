@@ -1,6 +1,6 @@
 ---
 title: "Landing Page Polish"
-status: "2-ready"
+status: "4-done"
 sprint: 1
 phase: 1
 section: "1.10"

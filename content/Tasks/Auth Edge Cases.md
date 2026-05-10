@@ -1,6 +1,6 @@
 ---
 title: "Auth Edge Cases"
-status: "3-backlog"
+status: "4-done"
 sprint: 1
 phase: 1
 section: "1.2"

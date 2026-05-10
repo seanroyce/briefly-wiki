@@ -1,8 +1,8 @@
 ---
 title: Phase 1 — MVP
 phase: 1
-status: in-progress
-completion: 65
+status: complete
+completion: 100
 tags:
   - phase
   - roadmap
@@ -12,7 +12,7 @@ tags:
 
 > Everything a single marketer needs to go from rough notes to an exported campaign brief.
 
-## Status: In Progress · 65%
+## Status: Complete · 100%
 
 ## Subsection Progress
 

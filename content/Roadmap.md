@@ -20,14 +20,14 @@ Project Setup → Design System → Auth → Dashboard → Brief Data Layer
 
 ## Current Focus
 
-**Phase 1 (MVP)** is ~80% complete. The highest-priority remaining tasks:
+**Sprint 1 is complete.** Phase 1 MVP is fully shipped. Beginning Sprint 2 — Pre-Launch Hardening.
 
-> [!todo] Immediate Next Steps
-> 1. Update `SUPABASE_SERVICE_ROLE_KEY` in `.env.local` (currently `placeholder`) after Supabase project restoration completes
-> 2. Apply migration `002_structured_content.sql` once Supabase is back online
-> 3. Set up Vercel deployment (Phase 0.4)
-> 4. Add loading skeleton states (Phase 1.1)
-> 5. Wire "Ask AI to help" inline refine button in `BriefSectionCard` (`POST /api/ai/refine`)
+> [!todo] Sprint 2 Next Steps
+> 1. Rate Limiting — `POST /api/ai/*` routes (p0)
+> 2. Security Hardening — CSP headers, input sanitization, secret audit (p1)
+> 3. Sentry Error Tracking (p1)
+> 4. E2E Tests — Wizard Flow (p1)
+> 5. E2E Tests — Dashboard (p2)
 
 See [[Sprint.base]] for the live task-level kanban.
 
@@ -35,8 +35,8 @@ See [[Sprint.base]] for the live task-level kanban.
 
 | Phase | Name | Status | Est. Completion |
 |-------|------|--------|----------------|
-| [[Phases/Phase 0 - Foundation\|Phase 0]] | Foundation | In Progress | 90% |
-| [[Phases/Phase 1 - MVP\|Phase 1]] | MVP | In Progress | 65% |
+| [[Phases/Phase 0 - Foundation\|Phase 0]] | Foundation | Complete | 100% |
+| [[Phases/Phase 1 - MVP\|Phase 1]] | MVP | Complete | 100% |
 | [[Phases/Phase 2 - Enhanced\|Phase 2]] | Enhanced | In Progress | 10% |
 | [[Phases/Phase 3 - Scale\|Phase 3]] | Scale | Pending | 0% |
 
