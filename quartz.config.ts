@@ -8,47 +8,47 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
-    pageTitleSuffix: "",
+    pageTitle: "Briefly — Project Wiki",
+    pageTitleSuffix: " | Briefly",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    baseUrl: "seanroyce.github.io/briefly-wiki",
+    ignorePatterns: ["private", "templates", ".obsidian", "**/*.base"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+        header: "Inter",
+        body: "Inter",
+        code: "JetBrains Mono",
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          light: "#faf8f8",     // page background
+          lightgray: "#e8e4df", // borders / hr
+          gray: "#a89880",      // subdued text
+          darkgray: "#161618",  // body text
+          dark: "#161618",      // headings
+          secondary: "#0582ca", // steel-blue — links
+          tertiary: "#00a6fb",  // fresh-sky — hover states
+          highlight: "rgba(255, 159, 28, 0.12)", // amber tint — link bg
+          textHighlight: "rgba(255, 159, 28, 0.4)", // amber — ==marked== text
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "#161618",     // dark mode background
+          lightgray: "#0b2d47", // border / hr
+          gray: "#2e6080",      // subdued text
+          darkgray: "#fdfffc",  // porcelain — body text
+          dark: "#fdfffc",      // porcelain — headings
+          secondary: "#ff9f1c", // amber-glow — links
+          tertiary: "#ffb84d",  // lighter amber — hover states
+          highlight: "rgba(255, 159, 28, 0.15)", // amber tint — link bg
+          textHighlight: "rgba(255, 159, 28, 0.35)", // amber — ==marked== text
         },
       },
     },

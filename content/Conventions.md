@@ -1,0 +1,137 @@
+---
+title: Conventions & Patterns
+tags:
+  - conventions
+  - patterns
+  - reference
+---
+
+# Conventions & Patterns
+
+## Zod v4
+
+Project uses **Zod 4.3.6**. The API changed from v3:
+
+```typescript
+// ✅ Correct — z.record() requires 2 args in Zod v4
+z.record(z.string(), z.unknown())
+
+// ❌ Wrong — Zod v3 syntax, fails in v4
+z.record(z.unknown())
+```
+
+All schemas in `src/types/brief.ts` and `src/types/auth.ts`.
+
+## Notifications (Toast)
+
+```typescript
+// ✅ Always import from sonner
+import { toast } from "sonner";
+toast.success("Brief saved");
+toast.error("Something went wrong");
+
+// ❌ Never use shadcn's toast
+```
+
+## Server Action Pattern
+
+```typescript
+"use server";
+
+export async function myAction(formData: FormData) {
+  const { user, error } = await getUser();
+  if (error || !user) return { error: "Unauthorized" };
+
+  const parsed = mySchema.safeParse(Object.fromEntries(formData));
+  if (!parsed.success) return { error: parsed.error.message };
+
+  const supabase = await createClient();
+  const { error: dbError } = await supabase.from("table").insert({ ... });
+  if (dbError) return { error: dbError.message };
+
+  revalidatePath("/dashboard");
+}
+```
+
+Pattern: accept `FormData` → validate with Zod → call Supabase → `revalidatePath()` → return `{ error }` on failure.
+
+## Next.js 16 `searchParams`
+
+Page props are Promises in Next.js 16 — must be awaited:
+
+```typescript
+// ✅ Correct
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ step?: string; briefId?: string }>;
+}) {
+  const { step, briefId } = await searchParams;
+}
+```
+
+## Supabase Client Selection
+
+| Context | Import |
+|---------|--------|
+| Server component, server action | `import { createClient } from "@/lib/supabase/server"` |
+| Client component | `import { createClient } from "@/lib/supabase/client"` |
+| Get current user in server context | `import { getUser } from "@/lib/supabase/auth"` |
+
+## Soft Deletes
+
+Briefs use soft delete — never hard-delete:
+
+```typescript
+// Delete: set deleted_at
+.update({ deleted_at: new Date().toISOString() })
+
+// Always filter out deleted rows
+.is("deleted_at", null)
+```
+
+## `cn()` Utility
+
+```typescript
+import { cn } from "@/lib/utils";
+
+// ✅ No duplicate keys
+cn("base", { "text-green-600": isSuccess, "text-red-600": isError })
+
+// ❌ Duplicate keys — TypeScript strict catches this
+cn("base", { "font-bold": a, "font-bold": b })
+```
+
+## Fonts
+
+- **Primary:** Inter (body, UI) — configured via `next/font/google` in `src/app/layout.tsx`
+- **Code:** JetBrains Mono
+- **Not Geist** — the project uses Inter, not Next.js's default Geist
+
+## Colors
+
+OKLCH color system defined in `src/app/globals.css`.
+
+| Semantic | Color |
+|----------|-------|
+| Primary | Indigo-600 |
+| Secondary | Emerald-500 |
+| Neutrals | Slate |
+| AI confidence high | Emerald |
+| AI confidence medium | Amber |
+| AI confidence low | Slate |
+| Gap severity critical | Red |
+| Gap severity recommended | Amber |
+| Gap severity nice-to-have | Slate |
+
+## Adding shadcn Components
+
+```bash
+# From briefly/
+npx shadcn@latest add <component-name>
+```
+
+## See Also
+
+- [[Components]] — component list and shadcn usage
+- [[Architecture]] — server action data flow

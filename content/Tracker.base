@@ -1,0 +1,24 @@
+filters: file.hasTag("phase")
+formulas:
+  status_icon: if(status == "complete", "✅", if(status == "in-progress", "🔄", "⏳"))
+  progress_bar: if(completion, completion.toString() + "%", "—")
+properties:
+  phase:
+    displayName: "Phase #"
+  status:
+    displayName: Status
+  completion:
+    displayName: Done
+  formula.progress_bar:
+    displayName: Progress
+views:
+  - type: table
+    name: Phase Tracker
+    order:
+      - phase
+      - file.name
+      - formula.status_icon
+      - formula.progress_bar
+      - status
+    summaries:
+      completion: Average

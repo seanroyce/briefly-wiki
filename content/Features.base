@@ -1,0 +1,83 @@
+filters:
+  and:
+    - file.inFolder("Wiki/Features")
+    - file.hasTag("feature")
+formulas:
+  status_icon: if(status == "complete", "✅", if(status == "in-progress", "🔄", "⏳"))
+  progress_bar: if(completion == 100, "████████████ 100%", if(completion >= 75, "█████████░░░ " + completion + "%", if(completion >= 50, "██████░░░░░░ " + completion + "%", if(completion >= 25, "███░░░░░░░░░ " + completion + "%", if(completion > 0, "█░░░░░░░░░░░ " + completion + "%", "░░░░░░░░░░░░ 0%")))))
+  phase_label: if(phase == 0, "Phase 0 — Foundation", if(phase == 1, "Phase 1 — MVP", if(phase == 2, "Phase 2 — Enhanced", "Phase 3 — Scale")))
+properties:
+  title:
+    displayName: Feature
+  phase:
+    displayName: Phase
+  section:
+    displayName: Section
+  status:
+    displayName: Status
+  completion:
+    displayName: "% Done"
+  category:
+    displayName: Category
+  spec_ref:
+    displayName: Spec §
+  formula.status_icon:
+    displayName: " "
+  formula.progress_bar:
+    displayName: Progress
+  formula.phase_label:
+    displayName: Phase
+views:
+  - type: table
+    name: By Phase
+    groupBy:
+      property: phase
+      direction: ASC
+    order:
+      - formula.status_icon
+      - title
+      - category
+      - formula.progress_bar
+      - spec_ref
+    summaries:
+      completion: Average
+    columnSize:
+      formula.status_icon: 86
+      note.title: 111
+      note.category: 132
+      formula.progress_bar: 135
+  - type: table
+    name: In Progress
+    filters:
+      and:
+        - status == "in-progress"
+    order:
+      - formula.status_icon
+      - title
+      - formula.phase_label
+      - category
+      - formula.progress_bar
+    summaries:
+      completion: Average
+  - type: table
+    name: Complete
+    filters:
+      and:
+        - status == "complete"
+    order:
+      - formula.status_icon
+      - title
+      - formula.phase_label
+      - category
+      - completion
+  - type: table
+    name: Pending
+    filters:
+      and:
+        - status == "pending"
+    order:
+      - formula.status_icon
+      - title
+      - formula.phase_label
+      - category
+      - priority

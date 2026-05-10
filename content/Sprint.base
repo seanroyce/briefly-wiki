@@ -1,0 +1,97 @@
+filters:
+  and:
+    - file.inFolder("Wiki/Tasks")
+    - file.hasTag("task")
+formulas:
+  sprint_label: if(sprint == 1, "Sprint 1 — MVP", if(sprint == 2, "Sprint 2 — Pre-Launch", if(sprint == 3, "Sprint 3 — Phase 2", "Future")))
+  phase_label: if(phase == 0, "Phase 0", if(phase == 1, "Phase 1 — MVP", if(phase == 2, "Phase 2 — Enhanced", "Phase 3 — Scale")))
+  status_display: if(status == "1-active", "🔄 Active", if(status == "2-ready", "🟢 Ready", if(status == "3-backlog", "⬜ Backlog", "✅ Done")))
+  size_hours: if(size == "xs", "< 1h", if(size == "s", "~2–4h", if(size == "m", "~1 day", if(size == "l", "2–3 days", "1+ week"))))
+properties:
+  title:
+    displayName: Task
+  status:
+    displayName: Status
+  formula.status_display:
+    displayName: " "
+  sprint:
+    displayName: Sprint
+  formula.sprint_label:
+    displayName: Sprint
+  phase:
+    displayName: Phase
+  formula.phase_label:
+    displayName: Phase
+  priority:
+    displayName: Priority
+  size:
+    displayName: Size
+  formula.size_hours:
+    displayName: Effort
+  category:
+    displayName: Category
+  section:
+    displayName: Section
+views:
+  - type: cards
+    name: Kanban
+    groupBy:
+      property: status
+      direction: ASC
+    order:
+      - title
+      - formula.status_display
+      - priority
+      - formula.size_hours
+      - formula.sprint_label
+      - category
+  - type: table
+    name: Sprint 1 — MVP
+    filters:
+      and:
+        - sprint == 1
+    groupBy:
+      property: priority
+      direction: ASC
+    order:
+      - formula.status_display
+      - title
+      - category
+      - formula.size_hours
+      - section
+  - type: table
+    name: Sprint 2 — Pre-Launch
+    filters:
+      and:
+        - sprint == 2
+    groupBy:
+      property: priority
+      direction: ASC
+    order:
+      - formula.status_display
+      - title
+      - category
+      - formula.size_hours
+      - section
+  - type: table
+    name: Full Backlog
+    groupBy:
+      property: sprint
+      direction: ASC
+    order:
+      - formula.status_display
+      - title
+      - priority
+      - formula.phase_label
+      - category
+      - formula.size_hours
+  - type: table
+    name: Done
+    filters:
+      and:
+        - status == "4-done"
+    order:
+      - title
+      - formula.phase_label
+      - category
+      - section

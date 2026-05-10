@@ -1,0 +1,30 @@
+{
+	"nodes":[
+		{"id":"a000000000000002","type":"group","x":-20,"y":-660,"width":820,"height":860,"color":"5","label":"Next.js App · Vercel"},
+		{"id":"a000000000000003","type":"group","x":860,"y":-660,"width":720,"height":630,"color":"4","label":"Supabase"},
+		{"id":"a000000000000001","type":"group","x":-950,"y":-380,"width":820,"height":500,"color":"2","label":"Browser"},
+		{"id":"b000000000000001","type":"text","text":"### Landing\n`/`\nPublic marketing page","x":-930,"y":-340,"width":360,"height":90},
+		{"id":"b000000000000002","type":"text","text":"### Auth\n`/login` `/signup`\n`/forgot-password` `/reset-password`","x":-930,"y":-230,"width":360,"height":90},
+		{"id":"b000000000000003","type":"text","text":"### Dashboard\n`/dashboard`\nBrief list · search · delete","x":-930,"y":-120,"width":360,"height":80},
+		{"id":"b000000000000004","type":"text","text":"### Wizard\n`/brief/new?briefId=:id`\n6-step campaign brief builder","x":-550,"y":-340,"width":360,"height":100},
+		{"id":"b000000000000005","type":"text","text":"### Brief View\n`/brief/[id]`\nRead-only · export PDF/MD","x":-550,"y":-220,"width":360,"height":90},
+		{"id":"b000000000000006","type":"text","text":"### Settings\n`/settings`\nProfile · password · account","x":-550,"y":-110,"width":360,"height":80},
+		{"id":"c000000000000002","type":"text","text":"### Server Actions\n`src/actions/`\n• auth.ts\n• brief.ts — CRUD + duplicate\n• brief-section.ts\n• gap.ts — analyzeGaps · dismissGap\n• process-context.ts\n• settings.ts","x":0,"y":-210,"width":380,"height":160},
+		{"id":"c000000000000003","type":"text","text":"### API Routes\n`src/app/api/`\n• `/api/brief/[id]/export/pdf`\n• `/api/brief/[id]/export/markdown`\n• `/api/files/upload`","x":0,"y":-30,"width":380,"height":190},
+		{"id":"c000000000000005","type":"text","text":"### AI Helpers\n`src/lib/ai/`\n• client.ts — Anthropic SDK init\n• prompts.ts — system prompts\n• gap-prompts.ts\n• retry.ts","x":400,"y":-210,"width":380,"height":190},
+		{"id":"e000000000000001","type":"text","text":"## Claude API (Anthropic)\n\n`claude-opus-4-7` · `claude-sonnet-4-6`\n\n• **processContext** — parse notes → structured section content\n• **analyzeGaps** — evaluate brief quality, return gaps with severity\n• Section refinement — improve sections with new user context *(planned)*","x":230,"y":480,"width":720,"height":200,"color":"6"},
+		{"id":"c000000000000006","type":"text","text":"### Export\n`src/lib/export/`\n• pdf.ts — jsPDF generation\n• markdown.ts — .md download","x":400,"y":0,"width":380,"height":160},
+		{"id":"c000000000000004","type":"text","text":"### Data Fetchers\n`src/lib/data/`\n• getBrief()\n• listBriefs()\n• getBriefWithSections()","x":400,"y":-450,"width":380,"height":210},
+		{"id":"c000000000000001","type":"text","text":"### Middleware\n`src/middleware.ts`\nSession refresh · route protection\nProtects `/dashboard` `/brief/*` `/settings`","x":0,"y":-450,"width":380,"height":210},
+		{"id":"d000000000000001","type":"text","text":"### Auth\nEmail + password\nGoogle OAuth\nJWT sessions in cookies","x":880,"y":-620,"width":320,"height":170},
+		{"id":"d000000000000003","type":"text","text":"### Storage\nUploaded brief assets\nPDF · DOCX · images · TXT\nPath: `brief-files/{briefId}/`","x":1220,"y":-620,"width":340,"height":170},
+		{"id":"d000000000000002","type":"text","text":"### Postgres (RLS)\n• `briefs`\n• `brief_sections`\n• `uploaded_files`\n• `gaps`\n\nAll tables: RLS enforces\n`user_id = auth.uid()`","x":880,"y":-430,"width":320,"height":190}
+	],
+	"edges":[
+		{"id":"f000000000000001","fromNode":"b000000000000005","fromSide":"right","toNode":"c000000000000001","toSide":"left","label":"HTTP / RSC"},
+		{"id":"f000000000000002","fromNode":"c000000000000002","fromSide":"right","toNode":"d000000000000002","toSide":"left","label":"DB queries (RLS)"},
+		{"id":"f000000000000003","fromNode":"c000000000000001","fromSide":"right","toNode":"d000000000000001","toSide":"left","label":"session check"},
+		{"id":"f000000000000004","fromNode":"c000000000000005","fromSide":"bottom","toNode":"e000000000000001","toSide":"top","label":"AI calls"},
+		{"id":"f000000000000005","fromNode":"c000000000000003","fromSide":"right","toNode":"d000000000000003","toSide":"left","label":"file uploads"}
+	]
+}
