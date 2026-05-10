@@ -75,6 +75,9 @@ views:
       - section
   - type: table
     name: Full Backlog
+    filters:
+      and:
+        - formula.sprint_label.containsAny("3")
     groupBy:
       property: sprint
       direction: ASC
@@ -85,6 +88,11 @@ views:
       - formula.phase_label
       - category
       - formula.size_hours
+    sort:
+      - property: priority
+        direction: DESC
+    columnSize:
+      formula.status_display: 91
   - type: table
     name: Done
     filters:
