@@ -15,6 +15,12 @@ AI-powered campaign brief builder. Paste rough marketing notes, walk through a 6
 
 ---
 
+## Overview
+
+| Topic | Page |
+|-------|------|
+| What Briefly is and who it's for | [[About]] |
+
 ## Building & Running
 
 | Topic | Page |
