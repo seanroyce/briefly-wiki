@@ -1,6 +1,6 @@
 ---
 title: "Gap Analysis - Loading UX"
-status: "2-ready"
+status: "4-done"
 sprint: 3
 phase: 2
 section: "2.1"
@@ -22,9 +22,9 @@ Live Playwright investigation on production showed gap analysis completes succes
 
 ## Tasks
 
-- [ ] Add sub-copy under the spinner: "This usually takes about a minute" (or similar)
-- [ ] Consider adding a subtle animated progress bar (indeterminate) to give a sense of activity
-- [ ] Ensure the loading container has a min-height so the page doesn't jump when results load
+- [x] Add sub-copy under the spinner: "This usually takes about a minute" (or similar)
+- [x] Consider adding a subtle animated progress bar (indeterminate) to give a sense of activity
+- [x] Ensure the loading container has a min-height so the page doesn't jump when results load
 
 ## See Also
 

@@ -1,6 +1,6 @@
 ---
 title: "Gap Analysis - Stepper Badge"
-status: "2-ready"
+status: "4-done"
 sprint: 3
 phase: 2
 section: "2.1"

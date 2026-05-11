@@ -18,11 +18,11 @@ tags:
 | `<PageContainer />` | `page-container.tsx` | Layout wrapper — controls max-width per page type |
 | `<EmptyState />` | `empty-state.tsx` | Illustration + headline + description + CTA button |
 | `<BriefCard />` | `brief-card.tsx` | Dashboard card — name, status badge, completion bar, gap count, last modified, options menu (edit, duplicate, delete) |
-| `<WizardStepper />` | `wizard-stepper.tsx` | Horizontal step indicator — states: pending / active / complete / skipped |
-| `<BriefSectionCard />` | `brief-section-card.tsx` | Wizard section editor — preview table, prompt questions, "Process context" + "Ask AI to help" buttons |
+| `<WizardStepper />` | `wizard-stepper.tsx` | Horizontal step indicator — states: pending / active / complete / skipped. Accepts `gapCount` prop; renders an amber badge on the Review step when gaps exist. |
+| `<BriefSectionCard />` | `brief-section-card.tsx` | Wizard section editor — preview table, prompt questions, "Process context" + "Ask AI to help" buttons. Accepts `inlineGaps` + `onDismissGap` to surface gap hints above the preview table once gap analysis has run. |
 | `<SubsectionPreviewTable />` | `subsection-preview-table.tsx` | Two-column table rendered from `structured_content` JSONB |
-| `<GapCard />` | `gap-card.tsx` | Severity badge, description, "Fix this" / "Dismiss" actions |
-| `<InlineGap />` | `inline-gap.tsx` | Inline gap indicator within brief view sections |
+| `<GapCard />` | `gap-card.tsx` | Severity badge, description, "Fix this" / "Dismiss" actions (Review step) |
+| `<InlineGap />` | `inline-gap.tsx` | Inline gap hint rendered inside `BriefSectionCard` — severity icon, description, suggested prompt, optional `onDismiss` X button |
 | `<BriefSectionNav />` | `brief-section-nav.tsx` | Sticky sidebar nav for brief view (desktop) |
 | `<BriefContent />` | `brief-content.tsx` | Renders all 9 sections in brief view |
 | `<FileUploadZone />` | `file-upload-zone.tsx` | Drag-and-drop upload — type/size validation, progress bars, remove button |

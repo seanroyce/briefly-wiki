@@ -1,6 +1,6 @@
 ---
 title: "Gap Analysis - Inline Section Hints"
-status: "3-backlog"
+status: "4-done"
 sprint: 3
 phase: 2
 section: "2.1"
@@ -22,11 +22,11 @@ The `InlineGap` component (`src/components/inline-gap.tsx`) exists but is not wi
 
 ## Tasks
 
-- [ ] Pass `activeGaps` down through wizard to each `BriefSectionCard` (filtered by `section_number`)
-- [ ] In `BriefSectionCard`, render an `<InlineGap>` for each applicable gap (severity + description + suggestedPrompt)
-- [ ] Only show inline gaps when `hasAnalyzed` is true
-- [ ] Dismissed gaps should not render inline
-- [ ] Add a "Dismiss" action on the inline gap (calls `handleDismissGap` via lifted callback)
+- [x] Pass `activeGaps` down through wizard to each `BriefSectionCard` (filtered by `section_number`)
+- [x] In `BriefSectionCard`, render an `<InlineGap>` for each applicable gap (severity + description + suggestedPrompt)
+- [x] Only show inline gaps when `hasAnalyzed` is true
+- [x] Dismissed gaps should not render inline
+- [x] Add a "Dismiss" action on the inline gap (calls `handleDismissGap` via lifted callback)
 
 ## See Also
 

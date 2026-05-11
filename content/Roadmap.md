@@ -20,9 +20,9 @@ Project Setup → Design System → Auth → Dashboard → Brief Data Layer
 
 ## Current Focus
 
-**Sprint 2 is complete.** Rate limiting, security hardening, AI metadata tracking, connected accounts, and E2E tests are shipped. One task remains: Sentry Error Tracking (requires interactive Sentry wizard setup).
+**Sprint 3 is complete.** Gap analysis UX improvements shipped: loading spinner with timing copy + indeterminate progress bar, empty brief guard (blocks AI call + inline warning when brief is empty, soft toast when <2 sections filled), inline gap hints in each `BriefSectionCard` (filtered by section, dismiss action lifted to wizard), and stepper badge (was already implemented). One manual task remains from Sprint 2: Sentry Error Tracking.
 
-> [!todo] Remaining Sprint 2
+> [!todo] Remaining
 > 1. Sentry Error Tracking — run `npx @sentry/wizard@latest -i nextjs`, set `SENTRY_DSN` in Vercel dashboard
 
 See [[Sprint.base]] for the live task-level kanban.
