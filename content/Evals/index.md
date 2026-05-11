@@ -1,5 +1,5 @@
 ---
-title: Eval Suite Index
+title: Evals
 tags:
   - evals
   - qa
