@@ -8,9 +8,6 @@ tags:
 
 **AI-powered campaign brief builder.** Paste rough marketing notes, walk a 6-step guided wizard, and get a structured, gap-analyzed campaign brief — ready to export as PDF or Markdown, or push to your project management tool.
 
-> [!info] Links
-> **App:** [project-yqnrm.vercel.app](https://project-yqnrm.vercel.app) · **GitHub:** [seanroyce/briefly](https://github.com/seanroyce/briefly)
-
 ---
 
 ## How It's Built
