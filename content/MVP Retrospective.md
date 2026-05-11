@@ -15,9 +15,6 @@ aliases:
 
 The MVP was completed in approximately one week of Claude Code Pro usage, then deployed from localhost to Vercel with a published GitHub Actions wiki for stakeholder review. This page captures the methodology used to build it, the key learnings from that process, and the extensibility decisions made along the way.
 
-> [!info] Links
-> **App:** [project-yqnrm.vercel.app](https://project-yqnrm.vercel.app) · **Wiki:** [seanroyce.github.io/briefly-wiki](https://seanroyce.github.io/briefly-wiki) · **Built with:** Claude Code, Obsidian, Quartz, GitHub
-
 ---
 
 ## The Problem
