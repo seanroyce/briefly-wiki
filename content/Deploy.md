@@ -77,6 +77,7 @@ Stored at `~/Library/Application Support/com.vercel.cli/auth.json`. Needed for d
 - **Bot filter** (`managedRules.bot_filter`) is active — challenges non-browser clients with a 429. Normal browser traffic passes automatically.
 - **Deployment Protection** (`ssoProtection`) is disabled — production is publicly accessible.
 - **pdf-parse must stay at v1.x.** v2 bundles pdfjs-dist 5.x which calls `DOMMatrix` at import time — crashes Vercel Lambda on every cold start. v1 uses pdfjs-dist 1.10.100 (no DOM). And in `extract.ts`, always wrap: `pdfParse(new Uint8Array(buffer))` — pdfjs v1.10.100 throws "bad XRef entry" when given a plain Node.js `Buffer`. See [[Conventions#File Ingest]] and [[Tasks/Ingest - PDF Extraction Config]].
+- **Tesseract.js CSP.** Client-side OCR for PNG/JPEG requires `worker-src blob:`, `https://cdn.jsdelivr.net` in both `script-src` and `connect-src`. Omitting any of these silently fails all image uploads. See [[Conventions#PNG/JPEG OCR — Tesseract.js CSP requirements]] and [[Tasks/Ingest - PNG OCR CSP Fix]].
 
 ## Supabase Auth URL Config
 
@@ -99,7 +100,7 @@ npx playwright test           # Run E2E tests (requires dev server running)
 
 Test files in `briefly/tests/`:
 - `tests/unit/` — Zod schemas, AI prompts, gap actions, components
-- `tests/e2e/` — gap analysis flow (Playwright)
+- `tests/e2e/` — gap analysis flow, file upload smoke tests (PDF/XLSX/PNG) — Playwright
 
 ## Key Version Constraints
 

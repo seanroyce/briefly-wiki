@@ -25,8 +25,10 @@ tags:
 | `<InlineGap />` | `inline-gap.tsx` | Inline gap hint rendered inside `BriefSectionCard` — severity icon, description, suggested prompt, optional `onDismiss` X button |
 | `<BriefSectionNav />` | `brief-section-nav.tsx` | Sticky sidebar nav for brief view (desktop) |
 | `<BriefContent />` | `brief-content.tsx` | Renders all 9 sections in brief view |
-| `<FileUploadZone />` | `file-upload-zone.tsx` | Drag-and-drop upload — type/size validation, progress bars, remove button |
+| `<FileUploadZone />` | `file-upload-zone.tsx` | Drag-and-drop upload — type/size validation, progress bars, per-file status (uploading / extracting / complete / error), remove button. Images use client-side Tesseract OCR; other formats POST to `/api/files/upload`. |
 | `<AIProcessingIndicator />` | `ai-processing-indicator.tsx` | Animated gradient bar + rotating status text during AI processing |
+| `<TemplatePicker />` | `brief/template/template-picker-client.tsx` | Card grid of 5 templates + "Start from scratch". Calls `createBrief(undefined, templateId)` on select and redirects to `/brief/new?briefId=…`. |
+| `<SharedBriefView />` | `brief/share/[token]/shared-brief-view.tsx` | Public read-only brief view. Fetches brief + sections from `GET /api/shared/[token]` via token validated at the page level. No auth required. |
 
 ## `PageContainer` Width Presets
 

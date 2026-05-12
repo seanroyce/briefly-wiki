@@ -166,6 +166,22 @@ const data = await pdfParse(buffer);
 serverExternalPackages: ["pdf-parse", "mammoth", "xlsx"]
 ```
 
+### PNG/JPEG OCR — Tesseract.js CSP requirements
+
+PNG and JPEG files use client-side OCR via **Tesseract.js v7** (`src/lib/files/ocr.ts`). Tesseract creates web workers from `blob:` URLs and calls `importScripts` from `cdn.jsdelivr.net`. Both require explicit CSP directives — omitting them causes silent "Processing failed" errors with no visible source.
+
+Three directives must be present in `next.config.ts`:
+
+```
+worker-src blob:
+script-src  ... https://cdn.jsdelivr.net
+connect-src ... https://cdn.jsdelivr.net
+```
+
+- `worker-src blob:` — allows the Tesseract worker to be created from a blob URL
+- `script-src https://cdn.jsdelivr.net` — allows the worker's `importScripts` call for `tesseract.js@v7.0.0/dist/worker.min.js`
+- `connect-src https://cdn.jsdelivr.net` — allows the worker to fetch WASM core and `eng.traineddata`
+
 ### Magic bytes validation
 
 `src/lib/files/validate.ts` centralises all format detection. Validate before extraction — MIME type alone is not trustworthy. DOCX and XLSX share the same PK zip signature (`50 4B 03 04`); disambiguation is by MIME type.

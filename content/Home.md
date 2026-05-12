@@ -66,12 +66,13 @@ AI-powered campaign brief builder. Paste rough marketing notes, walk through a 6
 ## What's Built
 
 - Full auth — email/password, Google OAuth, password reset, `users` profile table
-- Dashboard — brief list, search, sort, delete, duplication
-- 6-step wizard — auto-save, per-section AI extraction, file upload, gap analysis
-- Brief view — read view, PDF + Markdown export, edit route (`/brief/[id]/edit`)
+- Dashboard — brief list, search, sort, delete, duplication; inline error state with retry
+- 6-step wizard — auto-save, per-section AI extraction, file upload (PDF/DOCX/XLSX/CSV/TXT/PNG/JPEG), gap analysis
+- Brief view — read view, PDF + Markdown export, edit route, Share/Unshare with public token link
+- Brief templates — 5 starter templates pre-filling `structured_content` per section
 - AI pipeline — `processContext`, `processAllNotes`, `analyzeGaps`, `/api/ai/refine`
 - Account settings — profile, password, account deletion
 
 ## Current Sprint
 
-**Sprint 6 complete.** Dashboard error state, Shareable Brief Links, and Brief Templates all shipped. Phase 2 is 40% complete. Sprint 7 queues Dark Mode, Version History, and Project Management Adapters. See [[Sprint.base]] for the full board.
+**Sprint 7 in progress.** PNG/JPEG OCR CSP fix shipped (Tesseract.js workers now allowed). Dark Mode, Version History, and Project Management Adapters still queued. See [[Sprint.base]] for the full board.

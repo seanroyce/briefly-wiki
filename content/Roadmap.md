@@ -28,7 +28,12 @@ Project Setup → Design System → Auth → Dashboard → Brief Data Layer
 - **Shareable Brief Links** — `shareBrief` / `unshareBrief` server actions, migration 006 (RLS policy for anon read), `GET /api/shared/[token]`, `/brief/share/[token]` public read-only page, Share/Copy link/Unshare buttons in brief view
 - **Brief Templates** — 5 templates (`src/lib/templates.ts`): Product Launch, Event Promotion, Content Campaign, Brand Awareness, Seasonal/Promotional. `/brief/template` picker page. `createBrief` accepts optional `templateId` to seed `structured_content`. "New brief" button navigates to picker instead of creating blank brief directly.
 
-**Sprint 7 — ready to queue:**
+**Sprint 7 — in progress:**
+
+Shipped this session:
+- **PNG/JPEG OCR CSP fix** — Tesseract.js v7 workers were silently blocked by missing `worker-src blob:` and `cdn.jsdelivr.net` in `script-src`/`connect-src`. Fixed in `next.config.ts`. E2E smoke tests added (`tests/e2e/file-upload.spec.ts`). Deployed `f17367d`.
+
+Still queued:
 1. Dark Mode (m, p2) — `dark:` Tailwind variants, system detection, localStorage toggle
 2. Version History (l, p2) — `brief_snapshots` table, snapshot-on-step-complete, version list sidebar, restore
 3. Project Management Adapters (l, p2) — Asana/Monday/Jira export via `ProjectPlanAdapter` interface
