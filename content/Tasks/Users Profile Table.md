@@ -21,7 +21,7 @@ Add a `users` public profile table so name and avatar are stored in Postgres (no
 - [x] Add RLS: users can only select/update their own row
 - [x] Write DB trigger: auto-insert into `users` on `auth.users` insert
 - [x] Update `updateProfile` server action to write to `users` table (not just auth metadata)
-- [ ] Apply migration to Supabase (manual step — paste `003_users_profile.sql` into Supabase SQL Editor)
+- [x] Apply migration to Supabase — confirmed applied (2026-05-10); public.users table live with auto-populate trigger verified against prod
 
 ## See Also
 

@@ -76,6 +76,7 @@ Stored at `~/Library/Application Support/com.vercel.cli/auth.json`. Needed for d
 - **Commit author email must match Vercel account.** Vercel blocks deploys from commits with unverified author emails. Git is configured with `sean.r.gibbons@gmail.com`.
 - **Bot filter** (`managedRules.bot_filter`) is active — challenges non-browser clients with a 429. Normal browser traffic passes automatically.
 - **Deployment Protection** (`ssoProtection`) is disabled — production is publicly accessible.
+- **pdf-parse must stay at v1.x.** v2 bundles pdfjs-dist 5.x which calls `DOMMatrix` at import time — crashes Vercel Lambda on every cold start. v1 uses pdfjs-dist 1.10.100 (no DOM). And in `extract.ts`, always wrap: `pdfParse(new Uint8Array(buffer))` — pdfjs v1.10.100 throws "bad XRef entry" when given a plain Node.js `Buffer`. See [[Conventions#File Ingest]] and [[Tasks/Ingest - PDF Extraction Config]].
 
 ## Supabase Auth URL Config
 

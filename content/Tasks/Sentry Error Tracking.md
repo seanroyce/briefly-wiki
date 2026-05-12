@@ -1,6 +1,6 @@
 ---
 title: "Sentry Error Tracking"
-status: "2-ready"
+status: "4-done"
 sprint: 2
 phase: 1
 section: "cross-cutting"

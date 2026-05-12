@@ -131,6 +131,49 @@ OKLCH color system defined in `src/app/globals.css`.
 npx shadcn@latest add <component-name>
 ```
 
+## File Ingest (`src/lib/files/`)
+
+### Supported formats
+
+| Format | MIME | Extractor |
+|--------|------|-----------|
+| PDF | `application/pdf` | pdf-parse v1 + pdfjs v1.10.100 |
+| DOCX | `application/vnd.openxmlformats-officedocument.wordprocessingml.document` | mammoth |
+| XLSX | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` | SheetJS (xlsx) |
+| CSV | `text/csv` | raw UTF-8 |
+| TXT | `text/plain` | raw UTF-8 |
+| PNG/JPEG | `image/png`, `image/jpeg` | client-side OCR (`ocr.ts`) |
+
+### pdf-parse: always use `new Uint8Array(buffer)`
+
+pdfjs v1.10.100 (bundled in pdf-parse v1) requires a `Uint8Array`, not a Node.js `Buffer`. Passing a raw `Buffer` throws `"bad XRef entry"` on any valid PDF:
+
+```typescript
+// ✅ Correct
+const data = await pdfParse(new Uint8Array(buffer));
+
+// ❌ Crashes with "bad XRef entry" even on a perfectly valid PDF
+const data = await pdfParse(buffer);
+```
+
+**Do not upgrade pdf-parse to v2.x** — v2 bundles pdfjs-dist 5.x which references `DOMMatrix` (browser-only) at import time, crashing Vercel Lambda with `ReferenceError: DOMMatrix is not defined`.
+
+### `serverExternalPackages` (required)
+
+`next.config.ts` must list all three packages or Next.js bundles them and they break:
+
+```typescript
+serverExternalPackages: ["pdf-parse", "mammoth", "xlsx"]
+```
+
+### Magic bytes validation
+
+`src/lib/files/validate.ts` centralises all format detection. Validate before extraction — MIME type alone is not trustworthy. DOCX and XLSX share the same PK zip signature (`50 4B 03 04`); disambiguation is by MIME type.
+
+### XLSX CVE note
+
+SheetJS (`xlsx`) has a known prototype pollution CVE (CVE-2023-30533). Mitigated by auth-only access and the 4.5 MB upload cap. Track under Security Hardening task.
+
 ## See Also
 
 - [[Components]] — component list and shadcn usage

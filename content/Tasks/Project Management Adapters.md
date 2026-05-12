@@ -1,7 +1,7 @@
 ---
 title: "Project Management Adapters"
 status: "3-backlog"
-sprint: 4
+sprint: 5
 phase: 3
 section: "3.2"
 priority: p2

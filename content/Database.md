@@ -85,6 +85,22 @@ Files attached to a brief.
 | `extracted_text` | `text` | Text extracted for AI processing |
 | `extraction_status` | `text` | `pending` \| `complete` \| `failed` |
 
+### `project_plans`
+
+AI-generated project plans derived from a completed brief. Applied in migration 005.
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `id` | `uuid` | Primary key |
+| `brief_id` | `uuid` | References `briefs.id` (cascade delete) |
+| `plan_json` | `jsonb` | Full plan structure from Claude |
+| `model` | `text` | Claude model used |
+| `created_at` | `timestamptz` | Auto-set |
+| `created_by` | `uuid` | References `auth.users.id` |
+
+**Index:** `brief_id`  
+**RLS:** Users can select/insert plans for briefs they own (joined through `briefs.user_id`).
+
 ### `gaps`
 
 AI-identified planning gaps in a brief.
@@ -117,9 +133,9 @@ For `brief_sections`, `uploaded_files`, and `gaps` — policies join through `br
 | `supabase/migrations/001_briefs.sql` | All tables, RLS, indexes, `updated_at` triggers |
 | `supabase/migrations/002_structured_content.sql` | Adds `structured_content` JSONB to `brief_sections` |
 | `supabase/migrations/003_users_profile.sql` | `users` public profile table, RLS, auto-populate trigger |
+| `supabase/migrations/005_project_plans.sql` | `project_plans` table with RLS — applied 2026-05-11 |
 
-> [!warning] Migration 003 Pending
-> `003_users_profile.sql` has not yet been applied to the remote Supabase instance. Apply via the SQL Editor.
+All migrations applied to remote Supabase instance (`fhrolhncxmwviichjmst`).
 
 ## Supabase Clients
 

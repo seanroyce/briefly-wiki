@@ -49,7 +49,7 @@ Server Component (page.tsx)
 | `src/lib/ai/` | Anthropic SDK client, system prompts |
 | `src/lib/data/` | Read-only data fetchers for server components |
 | `src/lib/export/` | PDF and Markdown export utilities |
-| `src/lib/files/` | File extraction (pdf-parse, mammoth, OCR) |
+| `src/lib/files/` | File extraction: `extract.ts` (pdf-parse, mammoth, SheetJS, UTF-8), `validate.ts` (magic bytes), `ocr.ts` (client-side image OCR) |
 | `src/lib/supabase/` | Supabase client factories |
 | `src/types/` | Zod schemas + inferred TypeScript types |
 | `supabase/migrations/` | SQL migration files |
@@ -72,8 +72,9 @@ Server Component (page.tsx)
 |-------|---------|
 | `GET /api/brief/[id]/export/pdf` | Stream PDF of brief |
 | `GET /api/brief/[id]/export/markdown` | Download .md file |
-| `POST /api/files/upload` | Upload files to Supabase Storage |
+| `POST /api/files/upload` | Accept file, validate magic bytes, extract text, record in `uploaded_files` |
 | `POST /api/ai/refine` | Refine a section's structured content using Claude |
+| `GET /api/debug/pdf` | No-auth diagnostic: verifies pdf-parse import + parse work on Vercel |
 | `GET /auth/callback` | OAuth + email verification callback |
 
 ## See Also

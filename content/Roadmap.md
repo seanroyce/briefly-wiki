@@ -20,10 +20,18 @@ Project Setup → Design System → Auth → Dashboard → Brief Data Layer
 
 ## Current Focus
 
-**Sprint 3 is complete.** Gap analysis UX improvements shipped: loading spinner with timing copy + indeterminate progress bar, empty brief guard (blocks AI call + inline warning when brief is empty, soft toast when <2 sections filled), inline gap hints in each `BriefSectionCard` (filtered by section, dismiss action lifted to wizard), and stepper badge (was already implemented). One manual task remains from Sprint 2: Sentry Error Tracking.
+**Sprint 5 is complete.** File ingest is now fully working on Vercel. Shipped:
+
+- **XLSX support** — SheetJS (`xlsx`), all sheets joined, magic bytes in `validate.ts`, unit tested
+- **CSV support** — raw UTF-8 passthrough, unit tested
+- **PDF fix (two-part)** — pinned pdf-parse to v1.1.4 (eliminates DOMMatrix crash on Vercel Lambda) + wrapped buffer as `new Uint8Array(buffer)` in `extract.ts` (pdfjs v1.10.100 rejects plain Node.js `Buffer`)
+- **`/api/debug/pdf`** no-auth diagnostic route for future Vercel smoke tests
+- 122/122 unit tests passing
 
 > [!todo] Remaining
-> 1. Sentry Error Tracking — run `npx @sentry/wizard@latest -i nextjs`, set `SENTRY_DSN` in Vercel dashboard
+> 1. Deploy current main to Vercel production (`cd briefly && npx vercel --prod`)
+> 2. Apply pending migration `005` (if any) via Supabase SQL Editor
+> 3. Sentry Error Tracking — run `npx @sentry/wizard@latest -i nextjs`, set `SENTRY_DSN` in Vercel dashboard
 
 See [[Sprint.base]] for the live task-level kanban.
 
