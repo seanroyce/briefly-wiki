@@ -117,7 +117,7 @@ AI-identified planning gaps in a brief.
 
 ## RLS Policies
 
-All tables follow the same pattern:
+All tables follow the same pattern for authenticated users:
 
 ```sql
 -- Users can only SELECT/INSERT/UPDATE/DELETE their own rows
@@ -125,6 +125,15 @@ USING (user_id = auth.uid())
 ```
 
 For `brief_sections`, `uploaded_files`, and `gaps` — policies join through `briefs` to check `user_id`.
+
+**Public (anon) read policies** — added in migration 006:
+
+| Table | Policy | Condition |
+|-------|--------|-----------|
+| `briefs` | Public can read shared briefs | `is_shared = true AND share_token IS NOT NULL` |
+| `brief_sections` | Public can read sections of shared briefs | `brief_id` in shared briefs |
+
+These allow the `/brief/share/[token]` page and `GET /api/shared/[token]` route to work without authentication.
 
 ## Migrations
 
@@ -134,6 +143,7 @@ For `brief_sections`, `uploaded_files`, and `gaps` — policies join through `br
 | `supabase/migrations/002_structured_content.sql` | Adds `structured_content` JSONB to `brief_sections` |
 | `supabase/migrations/003_users_profile.sql` | `users` public profile table, RLS, auto-populate trigger |
 | `supabase/migrations/005_project_plans.sql` | `project_plans` table with RLS — applied 2026-05-11 |
+| `supabase/migrations/006_shareable_briefs_rls.sql` | Anon RLS SELECT policies for shared briefs + sections — applied 2026-05-11 |
 
 All migrations applied to remote Supabase instance (`fhrolhncxmwviichjmst`).
 

@@ -17,10 +17,10 @@ Build reusable skeleton loading states to eliminate layout shift and blank scree
 
 ## Tasks
 
-- [ ] `<BriefCardSkeleton />` — animated pulse matching BriefCard dimensions
-- [ ] `<SectionCardSkeleton />` — for wizard and brief view section cards
+- [x] `<BriefCardSkeleton />` — animated pulse matching BriefCard dimensions
+- [x] `<SectionCardSkeleton />` — for wizard and brief view section cards
 - [ ] `<PageSkeleton />` — for full-page loading (brief view, settings)
-- [ ] Apply skeletons to: dashboard brief grid, wizard step transitions, brief view initial load
+- [x] Apply skeletons to: dashboard brief grid, wizard step transitions, brief view initial load
 
 ## See Also
 

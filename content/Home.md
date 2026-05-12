@@ -74,4 +74,4 @@ AI-powered campaign brief builder. Paste rough marketing notes, walk through a 6
 
 ## Current Sprint
 
-Phase 1 MVP is live. Remaining sprint 1 tasks: **Loading Skeletons**, **Dashboard Polish**, **Landing Page Polish**. See [[Sprint.base]] for the full board.
+**Sprint 6 complete.** Dashboard error state, Shareable Brief Links, and Brief Templates all shipped. Phase 2 is 40% complete. Sprint 7 queues Dark Mode, Version History, and Project Management Adapters. See [[Sprint.base]] for the full board.

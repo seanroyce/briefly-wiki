@@ -20,18 +20,18 @@ Project Setup → Design System → Auth → Dashboard → Brief Data Layer
 
 ## Current Focus
 
-**Sprint 5 is complete.** File ingest is now fully working on Vercel. Shipped:
+**Sprint 6 — Phase 1 Close-out + Phase 2 Kickoff.** Phase 1 is ~97% complete. Sprint 5 shipped XLSX/CSV/PDF ingest (122 unit tests passing). Sprint 6 closes the last Phase 1 gap and starts Phase 2.
 
-- **XLSX support** — SheetJS (`xlsx`), all sheets joined, magic bytes in `validate.ts`, unit tested
-- **CSV support** — raw UTF-8 passthrough, unit tested
-- **PDF fix (two-part)** — pinned pdf-parse to v1.1.4 (eliminates DOMMatrix crash on Vercel Lambda) + wrapped buffer as `new Uint8Array(buffer)` in `extract.ts` (pdfjs v1.10.100 rejects plain Node.js `Buffer`)
-- **`/api/debug/pdf`** no-auth diagnostic route for future Vercel smoke tests
-- 122/122 unit tests passing
+**Sprint 6 is complete.** All three planned tasks shipped in one session:
 
-> [!todo] Remaining
-> 1. Deploy current main to Vercel production (`cd briefly && npx vercel --prod`)
-> 2. Apply pending migration `005` (if any) via Supabase SQL Editor
-> 3. Sentry Error Tracking — run `npx @sentry/wizard@latest -i nextjs`, set `SENTRY_DSN` in Vercel dashboard
+- **Dashboard Error State** — inline destructive alert + `router.refresh()` retry; `listBriefs` now returns `null` on DB error (was silently `[]`)
+- **Shareable Brief Links** — `shareBrief` / `unshareBrief` server actions, migration 006 (RLS policy for anon read), `GET /api/shared/[token]`, `/brief/share/[token]` public read-only page, Share/Copy link/Unshare buttons in brief view
+- **Brief Templates** — 5 templates (`src/lib/templates.ts`): Product Launch, Event Promotion, Content Campaign, Brand Awareness, Seasonal/Promotional. `/brief/template` picker page. `createBrief` accepts optional `templateId` to seed `structured_content`. "New brief" button navigates to picker instead of creating blank brief directly.
+
+**Sprint 7 — ready to queue:**
+1. Dark Mode (m, p2) — `dark:` Tailwind variants, system detection, localStorage toggle
+2. Version History (l, p2) — `brief_snapshots` table, snapshot-on-step-complete, version list sidebar, restore
+3. Project Management Adapters (l, p2) — Asana/Monday/Jira export via `ProjectPlanAdapter` interface
 
 See [[Sprint.base]] for the live task-level kanban.
 
@@ -41,7 +41,7 @@ See [[Sprint.base]] for the live task-level kanban.
 |-------|------|--------|----------------|
 | [[Phases/Phase 0 - Foundation\|Phase 0]] | Foundation | Complete | 100% |
 | [[Phases/Phase 1 - MVP\|Phase 1]] | MVP | Complete | 100% |
-| [[Phases/Phase 2 - Enhanced\|Phase 2]] | Enhanced | In Progress | 10% |
+| [[Phases/Phase 2 - Enhanced\|Phase 2]] | Enhanced | In Progress | 40% |
 | [[Phases/Phase 3 - Scale\|Phase 3]] | Scale | Pending | 0% |
 
 ## What's Complete
@@ -60,15 +60,14 @@ See [[Sprint.base]] for the live task-level kanban.
 - Account settings (profile, password, account deletion)
 - Brief duplication (`duplicateBrief` action + UI)
 
-## What's Next (MVP Gap)
+## What's Next (Phase 2)
 
-- Update `SUPABASE_SERVICE_ROLE_KEY` in `.env.local` (Supabase project was paused — reactivating)
-- Apply pending migration `002_structured_content.sql`
-- Vercel deployment
-- Users profile table migration (name, avatar_url)
-- Loading skeleton states
-- Dashboard sort dropdown
-- `POST /api/ai/refine` route + inline refine button in `BriefSectionCard`
+- **§2.1 Shareable Brief Links** — public read-only share URLs (Sprint 6, ready)
+- **§2.2 Brief Templates** — starter templates with pre-fill and merge (Sprint 6, ready)
+- **§2.5 Dark Mode** — system-aware toggle (Sprint 6 stretch)
+- **§2.4 Version History** — brief snapshot + restore (Sprint 7)
+- **§3.2 Project Management Adapters** — Asana/Monday/Jira export (Sprint 7+)
+- **§3.5 Slack Bot + Webhooks** — event-driven workflow integrations (Sprint 7+)
 
 ## See Also
 

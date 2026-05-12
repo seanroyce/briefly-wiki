@@ -17,10 +17,10 @@ Complete the public landing page to a launch-ready state.
 
 ## Tasks
 
-- [ ] Footer — copyright line, Privacy (placeholder) and Terms (placeholder) links
-- [ ] Nav — show "Log in" + "Get started" buttons for unauthenticated visitors; hide "+ New brief" link
-- [ ] Hero — finalize subheadline copy per spec §7.1
-- [ ] Mobile responsive — stacked hero, single-column features grid, readable on 375px
+- [x] Footer — copyright line, Privacy (placeholder) and Terms (placeholder) links
+- [x] Nav — show "Log in" + "Get started" buttons for unauthenticated visitors; hide "+ New brief" link
+- [x] Hero — finalize subheadline copy per spec §7.1
+- [x] Mobile responsive — stacked hero, single-column features grid, readable on 375px
 
 ## See Also
 

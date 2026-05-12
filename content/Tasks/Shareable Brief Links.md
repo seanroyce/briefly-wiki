@@ -1,7 +1,7 @@
 ---
 title: "Shareable Brief Links"
-status: "3-backlog"
-sprint: 3
+status: "4-done"
+sprint: 6
 phase: 2
 section: "2.1"
 priority: p1

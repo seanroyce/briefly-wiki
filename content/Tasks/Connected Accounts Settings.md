@@ -17,9 +17,9 @@ Show Google OAuth connection status in `/settings` and allow users to disconnect
 
 ## Tasks
 
-- [ ] Detect whether the current user signed in via Google (check `app_metadata.provider`)
-- [ ] Render "Connected Accounts" section in settings — Google logo, "Connected" badge or "Not connected" state
-- [ ] "Disconnect Google" button → unlink via Supabase Admin API; show confirmation toast
+- [x] Detect whether the current user signed in via Google (check `app_metadata.provider`)
+- [x] Render "Connected Accounts" section in settings — Google logo, "Connected" badge or "Not connected" state
+- [x] "Disconnect Google" button → unlink via Supabase Admin API; show confirmation toast
 
 ## See Also
 

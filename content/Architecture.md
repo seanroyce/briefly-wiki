@@ -21,9 +21,11 @@ Pages follow a **server component → client component** split:
 | `/forgot-password` | `app/forgot-password/page.tsx` | Password reset request |
 | `/reset-password` | `app/reset-password/page.tsx` | Set new password |
 | `/dashboard` | `app/dashboard/page.tsx` | Brief list (protected) |
+| `/brief/template` | `app/brief/template/page.tsx` | Template picker — shown before wizard, selects one of 5 templates or blank (protected) |
 | `/brief/new` | `app/brief/new/page.tsx` | 6-step wizard (protected) |
 | `/brief/[id]` | `app/brief/[id]/page.tsx` | Brief detail/read view (protected) |
 | `/brief/[id]/edit` | `app/brief/[id]/edit/page.tsx` | Wizard pre-populated for editing (protected) |
+| `/brief/share/[token]` | `app/brief/share/[token]/page.tsx` | Public read-only shared brief view — no auth required |
 | `/settings` | `app/settings/page.tsx` | Account settings (protected) |
 
 ## Data Flow
@@ -47,6 +49,7 @@ Server Component (page.tsx)
 | `src/components/` | Custom UI components |
 | `src/components/ui/` | shadcn/ui primitives (new-york style) |
 | `src/lib/ai/` | Anthropic SDK client, system prompts |
+| `src/lib/templates.ts` | 5 built-in brief templates with pre-filled `structured_content` per section |
 | `src/lib/data/` | Read-only data fetchers for server components |
 | `src/lib/export/` | PDF and Markdown export utilities |
 | `src/lib/files/` | File extraction: `extract.ts` (pdf-parse, mammoth, SheetJS, UTF-8), `validate.ts` (magic bytes), `ocr.ts` (client-side image OCR) |
@@ -59,7 +62,7 @@ Server Component (page.tsx)
 | File | Actions |
 |------|---------|
 | `src/actions/auth.ts` | `login`, `signup`, `logout`, `forgotPassword`, `resetPassword` |
-| `src/actions/brief.ts` | `createBrief`, `updateBrief`, `deleteBrief`, `saveBrief`, `duplicateBrief` |
+| `src/actions/brief.ts` | `createBrief`, `updateBrief`, `deleteBrief`, `saveBrief`, `duplicateBrief`, `shareBrief`, `unshareBrief` |
 | `src/actions/brief-section.ts` | `updateBriefSection`, `bulkUpdateBriefSections` |
 | `src/actions/gap.ts` | `analyzeGaps`, `dismissGap` |
 | `src/actions/process-context.ts` | `processContext` (Claude API call per section) |
@@ -74,6 +77,7 @@ Server Component (page.tsx)
 | `GET /api/brief/[id]/export/markdown` | Download .md file |
 | `POST /api/files/upload` | Accept file, validate magic bytes, extract text, record in `uploaded_files` |
 | `POST /api/ai/refine` | Refine a section's structured content using Claude |
+| `GET /api/shared/[token]` | No-auth JSON fetch of a shared brief + sections by share token |
 | `GET /api/debug/pdf` | No-auth diagnostic: verifies pdf-parse import + parse work on Vercel |
 | `GET /auth/callback` | OAuth + email verification callback |
 

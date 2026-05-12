@@ -8,45 +8,44 @@ tags:
 
 **AI-powered campaign brief builder.** Paste rough marketing notes, walk a 6-step guided wizard, and get a structured, gap-analyzed campaign brief — ready to export as PDF or Markdown, or push to your project management tool.
 
+**Live app:** [project-yqnrm.vercel.app](https://project-yqnrm.vercel.app) · **GitHub:** [seanroyce/briefly](https://github.com/seanroyce/briefly)
+
 ---
 
-## How It's Built
+## Technical Reference
 
-| | |
-|--|--|
-| [[Architecture]] | App Router structure, routes, server actions, data flow |
-| [[Database]] | Postgres schema, RLS policies, migrations |
-| [[Auth]] | Email/password, Google OAuth, middleware, session handling |
-| [[AI Pipeline]] | Claude API integration, prompts, server actions |
-| [[Wizard]] | 6-step wizard — sections, AI extraction, gap analysis |
-| [[Components]] | UI component reference (shadcn/ui + custom) |
-| [[Conventions]] | Code patterns, Zod v4, Sonner, naming rules, gotchas |
-| [[Deploy]] | Vercel deployment, environment variables, Supabase CLI |
-| [[Extensibility]] | Future upgrades — streaming AI, background jobs, Railway |
+| Page | Description |
+|------|-------------|
+| [[Architecture]] | App Router route tree, server actions, middleware wiring, and end-to-end data flow. |
+| [[Database]] | Postgres schema, Supabase RLS policies, storage bucket setup, and migration history. |
+| [[Auth]] | Email/password and Google OAuth flows, session handling, and middleware route protection. |
+| [[AI Pipeline]] | Claude API integration, prompt design, and the `processContext` / `processAllNotes` / `analyzeGaps` server actions. |
+| [[Wizard]] | 6-step wizard — step/section mapping, AI extraction per card, gap analysis UI, and auto-save behavior. |
+| [[Components]] | Annotated reference for every UI component: shadcn/ui base components and custom wrappers. |
+| [[Conventions]] | Project-wide code patterns — Zod v4, Sonner, OKLCH colors, naming rules, and known gotchas. |
+| [[Deploy]] | Vercel deployment workflow, environment variable management, and Supabase CLI usage. |
+| [[Extensibility]] | Planned architectural upgrades — streaming AI responses, background jobs, and alternative hosting paths. |
+
+---
 
 ## Planning
 
-| | |
-|--|--|
-| [[Roadmap]] | Phase overview and current sprint status |
-| [[About]] | Product vision, user stories, goals |
-| [[MVP Retrospective]] | Methodology, key learnings, and findings from the MVP build |
+| Page | Description |
+|------|-------------|
+| [[About]] | Product vision, target users, and the core user stories Briefly is built around. |
+| [[Roadmap]] | Phase-by-phase overview of what's shipped, what's in progress, and what's queued for future sprints. |
+| [[MVP Retrospective]] | How the MVP was built — 4-agent methodology, 6-step development cycle, and key learnings. |
 
 ---
 
-## What's Shipped
+## Sections
 
-- **Auth** — email/password + Google OAuth, password reset, `users` profile table, protected routes
-- **Dashboard** — brief list with search, sort, delete, duplication
-- **6-step wizard** — auto-save, per-section AI extraction, file upload (PDF/DOCX/images)
-- **Gap analysis** — AI reviews all 9 sections, flags critical/recommended/nice-to-have gaps; inline hints in each section card; amber badge on stepper; empty-brief guard
-- **Brief view** — read-only view, PDF export, Markdown export, edit route
-- **AI pipeline** — `processContext`, `processAllNotes`, `analyzeGaps`, `/api/ai/refine`
-- **Account settings** — profile, password change, account deletion, connected integrations
-- **Security** — rate limiting on AI endpoints, RLS on all tables, CSRF protection
-
-> [!success] Current Status
-> **Sprint 3 complete** (2026-05-10) — gap analysis UX polish shipped. Sprint 4 planning underway: Phase 3 integrations (Slack bot, project plan export to Asana/Monday/Jira, outbound webhooks).
+| Section | Description |
+|---------|-------------|
+| [[Evals/index\|Evals]] | Given/When/Then test cases for auth, wizard, AI pipeline, dashboard, and data integrity — the release criteria. |
+| [[Features/index\|Features]] | Feature specifications organized by phase (0–3), each with status, completion percentage, and spec references. |
+| [[Phases/index\|Phases]] | Phase summaries grouping features into Foundation, MVP, Enhanced, and Scale milestones. |
+| [[Tasks/index\|Tasks]] | Granular implementation tasks with status, priority tier, and acceptance criteria. |
 
 ---
 
